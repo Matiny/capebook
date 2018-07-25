@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg4136"
+   height="206"
+   viewBox="0 0 640.91034 206.00346"
+   width="640.91"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="button.svg">
+  <defs
+     id="defs7" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview5"
+     showgrid="false"
+     inkscape:zoom="0.78995253"
+     inkscape:cx="295.39034"
+     inkscape:cy="105.82412"
+     inkscape:current-layer="svg4136" />
+  <metadata
+     id="metadata4142">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     id="path4146"
+     fill="#fff"
+     d="m2.8783 198.25c12.394-33.38 70.569-188.85 72.219-193l2.086-5.25h281.87 281.86l-3.47 9.75c-1.9065 5.3625-18.285 51.6-36.397 102.75l-32.92 93-284.06 0.25-284.06 0.25 2.8783-7.75z" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:90.00151825px;line-height:125%;font-family:Montserrat;-inkscape-font-specification:'Montserrat Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="319.97281"
+     y="134.54726"
+     id="text4135"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan4137"
+       x="319.97281"
+       y="134.54726">SUBMIT</tspan></text>
+</svg>
