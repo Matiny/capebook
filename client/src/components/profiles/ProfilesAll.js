@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { getAllProfiles } from "../../actions/profileActions";
 
 import Loading from "../common/loading";
-import ProfileItem from "./ProfileItem";
+import ProfileCard from "./ProfileCard";
 
 class ProfilesAll extends Component {
   componentDidMount() {
@@ -33,18 +33,21 @@ class ProfilesAll extends Component {
       profileItems = <Loading />;
     } else {
       if (profiles.length > 0) {
+        // Display each profile via map
         profileItems = profiles.map(profile => (
-          <ProfileItem key={profile._id} profile={profile} />
+          <ProfileCard key={profile._id} profile={profile} />
         ));
       } else {
         profileItems = <h1>No Character Profiles Found!</h1>;
       }
     }
     return (
-      <section style={styles}>
-        <h1 className="browse">Browse the Character Profiles</h1>
+      <main style={styles}>
+        <section className="browse">
+          <h1>Browse the Character Profiles</h1>
+        </section>
         {profileItems}
-      </section>
+      </main>
     );
   }
 }

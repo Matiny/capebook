@@ -116,3 +116,13 @@ main {
     @include positioning(89%, 50%);
   }
 }
+
+.avatar {
+  height: 3.5vw;
+  width: 3.5vw;
+  overflow: hidden;
+  @include positioning(14%, 50%);
+  img {
+    height: 100%;
+  }
+}

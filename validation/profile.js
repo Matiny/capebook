@@ -25,6 +25,14 @@ module.exports = validateProfileInput = data => {
     errors.alignment = "Moral alignment is required";
   }
 
+  // URL checks
+
+  if (!isEmpty(data.profilePic)) {
+    if (!validator.isURL(data.profilePic)) {
+      errors.profilePic = "Invalid URL";
+    }
+  }
+
   return {
     errors, // Also written as errors: errors
     isValid: isEmpty(errors)

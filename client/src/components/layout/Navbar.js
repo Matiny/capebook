@@ -4,17 +4,34 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import { clearOnlineProfile } from "../../actions/profileActions";
+import {
+  getOnlineProfile,
+  clearOnlineProfile
+} from "../../actions/profileActions";
 
 class Navbar extends Component {
+  componentDidMount() {
+    this.props.getOnlineProfile();
+  }
   logoutClick = () => {
     this.props.clearOnlineProfile();
     this.props.logoutUser();
   };
   render() {
     let { isAuthenticated, user } = this.props.auth;
+    let { profile, loading } = this.props.profile;
+    let picture;
+    if (profile === null || loading) {
+      picture = null;
+    }
+    else {
+      picture = profile.profilePic;
+    }
     let authLinks = (
       <div>
+        <span className="avatar">
+          <img src={picture} alt=""/>
+        </span>
         <span className="nav-one link">Welcome, {user.name}</span>
         <span className="nav-four link" onClick={this.logoutClick}>
           Log Out
@@ -52,15 +69,17 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  // clearOnlineProfile: PropTypes.func.isRequired,
+  clearOnlineProfile: PropTypes.func.isRequired,
+  getOnlineProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  profile: state.profile
 });
 
 export default connect(
   mapStateToProps,
-  { logoutUser, clearOnlineProfile }
+  { logoutUser, clearOnlineProfile, getOnlineProfile }
 )(Navbar);

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
-const multer = require('multer');
+// const multer = require('multer');
 
 //Load the validation
 const validateProfileInput = require("../../validation/profile");
@@ -14,16 +14,16 @@ const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 
 // Customize image upload settings
-const storage = multer.diskStorage({
-  destination: "./uploads/",
-  filename: (req, file, cb) => {
-    cb(null, file.originalname)
-  }
-});
-
-const upload = multer({ storage, limits: {
-  fileSize: 1024 * 1024
-} });
+// const storage = multer.diskStorage({
+//   destination: "./uploads/",
+//   filename: (req, file, cb) => {
+//     cb(null, file.originalname)
+//   }
+// });
+//
+// const upload = multer({ storage, limits: {
+//   fileSize: 1024 * 1024
+// } });
 
 //@route   GET api/profile/test
 //@desc    Test profile routes
@@ -37,7 +37,7 @@ router.get("/test", (req, res) => {
 //@access  Private
 router.post(
   "/",
-  upload.single("profilePic"),
+  // upload.single("profilePic"),
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     console.log(req.file);
@@ -54,10 +54,12 @@ router.post(
     // Assign the value to the profileFields object
     if (req.body.username) profileFields.username = req.body.username;
     if (req.body.bio) profileFields.bio = req.body.bio;
+    if (req.body.realname) profileFields.realname = req.body.realname;
     if (req.body.alignment) profileFields.alignment = req.body.alignment;
     if (req.body.location) profileFields.location = req.body.location;
     if (req.body.origin) profileFields.origin = req.body.origin;
-    if (req.file.path) profileFields.profilePic = req.file.path;
+    if (req.body.profilePic) profileFields.profilePic = req.body.profilePic;
+
     //Skills will be split into array
     if (typeof req.body.skills !== "undefined")
       profileFields.skills = req.body.skills.split(",");

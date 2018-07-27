@@ -19,6 +19,9 @@ const ProfileSchema = new Schema({
   bio: {
     type: String
   },
+  realname: {
+    type: String
+  },
   alignment: {
     type: String,
     required: true

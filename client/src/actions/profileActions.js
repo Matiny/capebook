@@ -6,8 +6,7 @@ import {
   GET_PROFILES,
   PROFILE_LOADING,
   GET_ERRORS,
-  CLEAR_ONLINE_PROFILE,
-  SET_CURRENT_USER
+  CLEAR_ONLINE_PROFILE
 } from "./types";
 
 //Get profile of online user
@@ -17,6 +16,15 @@ export let getOnlineProfile = () => dispatch => {
     .get("/api/profile")
     .then(res => dispatch({ type: GET_PROFILE, payload: res.data }))
     .catch(err => dispatch({ type: GET_PROFILE, payload: {} }));
+};
+
+//Get profile by username
+export let getUsername = (username) => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get(`/api/profile/username/${username}`)
+    .then(res => dispatch({ type: GET_PROFILE, payload: res.data }))
+    .catch(err => dispatch({ type: GET_PROFILE, payload: null }));
 };
 
 // Get all profiles

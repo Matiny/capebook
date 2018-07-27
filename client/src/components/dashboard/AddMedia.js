@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Input from "../common/Input";
 import Textarea from "../common/Textarea";
 import { connect } from "react-redux";
@@ -49,9 +49,11 @@ class AddMedia extends Component {
     let { errors } = this.state;
 
     return (
-      <section style={styles}>
+      <main style={styles}>
         <form className="profile-form">
-          <h1>Add a Story</h1>
+          <section className="form-head">
+            <h1>Add a Story</h1>
+          </section>
           <Input
             label="Title"
             name="title"
@@ -90,12 +92,13 @@ class AddMedia extends Component {
             value={this.state.description}
             onChange={this.newValue}
           />
-
-          <span onClick={this.submitForm}>
-            <p>SUBMIT</p>
-          </span>
+          <section className="submit-form">
+            <span onClick={this.submitForm}>
+              <p>SUBMIT</p>
+            </span>
+          </section>
         </form>
-      </section>
+      </main>
     );
   }
 }

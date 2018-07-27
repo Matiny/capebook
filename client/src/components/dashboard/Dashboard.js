@@ -37,9 +37,7 @@ class Dashboard extends Component {
       if (Object.keys(profile).length > 0) {
         dashboardContent = (
           <div>
-            <img src={profile.profilePic} alt=""/>
             <Link to={`profile/${profile.username}`} className="profile-button"><p>View Profile</p></Link>
-            {/* <img src={profile.profilePic} alt=""/> */}
             <ProfileButtons />
             {profile.media.length > 0 ?
               <Media media={profile.media} /> : null}

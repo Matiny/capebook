@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
+import { createProfile, getOnlineProfile } from "../../actions/profileActions";
+import isEmpty from '../../utils/is-empty.js';
+
+// Components
 import Input from "../common/Input";
 import Textarea from "../common/Textarea";
 import Select from "../common/Select";
-import { createProfile, getOnlineProfile } from "../../actions/profileActions";
-import isEmpty from '../../utils/is-empty';
-
+import DropZone from "react-dropzone";
 
 class EditProfile extends Component {
   constructor(props) {
@@ -16,10 +18,12 @@ class EditProfile extends Component {
       errors: {},
       username: "",
       bio: "",
+      realname: "",
       alignment: "",
       location: "",
       skills: "",
       origin: "",
+      profilePic: "",
       number: Math.floor(Math.random() * 9) + 1
     };
   }
@@ -32,25 +36,31 @@ class EditProfile extends Component {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
+
     if (nextProps.profile.profile) {
-      // Set the profile state to a var of the same name
       let profile = nextProps.profile.profile;
-      // Convert skills array into CSV
+      // Deconvert skills array into comma separated values
       let skillsCSV = profile.skills.join(",");
-      // If profile value doesn't exist, convert to empty string
+
+      // If profile values don't exist then convert to empty string
       profile.username = !isEmpty(profile.username) ? profile.username : "";
       profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
       profile.alignment = !isEmpty(profile.alignment) ? profile.alignment : "";
       profile.location = !isEmpty(profile.location) ? profile.location : "";
+      profile.realname = !isEmpty(profile.realname) ? profile.realname : "";
       profile.origin = !isEmpty(profile.origin) ? profile.origin : "";
+      profile.profilePic = !isEmpty(profile.profilePic) ? profile.profilePic : "";
 
+      // Set state for the values
       this.setState({
         username: profile.username,
         bio: profile.bio,
         alignment: profile.alignment,
         location: profile.location,
+        realname: profile.realname,
         skills: skillsCSV,
-        origin: profile.origin
+        origin: profile.origin,
+        profilePic: profile.profilePic
       });
     }
   }
@@ -62,11 +72,13 @@ class EditProfile extends Component {
     let profileData = {
       username: this.state.username,
       bio: this.state.bio,
+      realname: this.state.realname,
       alignment: this.state.alignment,
       location: this.state.location,
       skills: this.state.skills,
-      origin: this.state.origin
-    };
+      origin: this.state.origin,
+      profilePic: this.state.profilePic
+    }
 
     this.props.createProfile(profileData, this.props.history);
   };
@@ -76,29 +88,48 @@ class EditProfile extends Component {
     // Set the select component's alignment options
     let options = [
       { label: "Select Moral Alignment (Required)", value: "" },
-      { label: "Good (Lawful)", value: "Good - Lawful" },
-      { label: "Good (Neutral)", value: "Good - Neutral" },
-      { label: "Good (Chaotic)", value: "Good - Chaotic" },
-      { label: "Neutral (Lawful)", value: "Neutral - Lawful" },
+      { label: "Good (Lawful)", value: "Good (Lawful)" },
+      { label: "Good (Neutral)", value: "Good (Neutral)" },
+      { label: "Good (Chaotic)", value: "Good (Chaotic)" },
+      { label: "Neutral (Lawful)", value: "Neutral (Lawful)" },
       { label: "Neutral", value: "Neutral" },
-      { label: "Neutral (Chaotic)", value: "Neutral - Chaotic" },
-      { label: "Evil (Lawful)", value: "Evil - Lawful" },
-      { label: "Evil (Neutral)", value: "Evil - Neutral" },
-      { label: "Evil (Chaotic)", value: "Evil - Chaotic" }
+      { label: "Neutral (Chaotic)", value: "Neutral (Chaotic)" },
+      { label: "Evil (Lawful)", value: "Evil (Lawful)" },
+      { label: "Evil (Neutral)", value: "Evil (Lawful)" },
+      { label: "Evil (Chaotic)", value: "Evil (Chaotic)" }
     ];
     const styles = {
-      backgroundImage: `url(${require(`../../images/bgs/dashboard.jpg`)})`,
+      backgroundImage: `url(${require(`../../images/bgs/${
+        this.state.number
+      }.jpg`)})`,
       backgroundSize: "cover",
       backgroundPosition: "center center"
     };
     return (
-      <main style={styles} >
+      <main style={styles} className="form-page">
         <form className="profile-form">
           <section className="form-head">
             <h1>Edit Your Profile</h1>
           </section>
           <Input
-            label="Profile Name"
+            label="Real Name"
+            name="realname"
+            placeholder="Reveal your secret identity"
+            value={this.state.realname}
+            onChange={this.newValue}
+          />
+
+          <Input
+            label="Profile Picture"
+            name="profilePic"
+            placeholder="Enter a URL"
+            value={this.state.profilePic}
+            onChange={this.newValue}
+            error={errors.profilePic}
+          />
+
+          <Input
+            label="User Name"
             name="username"
             placeholder="(Required)"
             value={this.state.username}
@@ -127,7 +158,7 @@ class EditProfile extends Component {
           <Input
             label="Location"
             name="location"
-            placeholder="Where's your HQ?"
+            placeholder="Where are you based?"
             value={this.state.location}
             onChange={this.newValue}
           />
@@ -147,9 +178,12 @@ class EditProfile extends Component {
             value={this.state.bio}
             onChange={this.newValue}
           />
-          <span onClick={this.submitForm}>
-            <p>SUBMIT</p>
-          </span>
+
+          <section className="submit-form">
+            <span onClick={this.submitForm}>
+              <p>SUBMIT</p>
+            </span>
+          </section>
         </form>
       </main>
     );

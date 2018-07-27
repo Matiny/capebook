@@ -17,10 +17,12 @@ class CreateProfile extends Component {
       errors: {},
       username: "",
       bio: "",
+      realname: "",
       alignment: "",
       location: "",
       skills: "",
       origin: "",
+      profilePic: "",
       number: Math.floor(Math.random() * 9) + 1
     };
   }
@@ -34,23 +36,18 @@ class CreateProfile extends Component {
   //Set text values to state
   newValue = e => this.setState({ [e.target.name]: e.target.value });
 
-  dropImage = (files, rejectFiles) => {
-    if (files.length > 0) {
-      this.setState({ profilePic: files[0] });
-    }
-  };
-
   submitForm = () => {
-    let profileData = new FormData();
 
-    profileData.append("username", this.state.username);
-    profileData.append("bio", this.state.bio);
-    profileData.append("alignment", this.state.alignment);
-    profileData.append("location", this.state.location);
-    profileData.append("skills", this.state.skills);
-    profileData.append("origin", this.state.origin);
-    profileData.append("profilePic", this.state.profilePic);
-    console.log(this.state.profilePic);
+    let profileData = {
+      username: this.state.username,
+      bio: this.state.bio,
+      realname: this.state.realname,
+      alignment: this.state.alignment,
+      location: this.state.location,
+      skills: this.state.skills,
+      origin: this.state.origin,
+      profilePic: this.state.profilePic
+    }
 
     this.props.createProfile(profileData, this.props.history);
   };
@@ -83,8 +80,26 @@ class CreateProfile extends Component {
           <section className="form-head">
             <h1>Create Your Profile</h1>
           </section>
+
           <Input
-            label="Profile Name"
+            label="Real Name"
+            name="realname"
+            placeholder="Reveal your secret identity"
+            value={this.state.realname}
+            onChange={this.newValue}
+          />
+
+          <Input
+            label="Profile Picture"
+            name="profilePic"
+            placeholder="Enter a URL"
+            value={this.state.profilePic}
+            onChange={this.newValue}
+            error={errors.profilePic}
+          />
+
+          <Input
+            label="User Name"
             name="username"
             placeholder="(Required)"
             value={this.state.username}
@@ -92,12 +107,6 @@ class CreateProfile extends Component {
             error={errors.username}
           />
 
-          <section className="dropZC">
-            <DropZone onDrop={this.dropImage} style="ignore" className="customDrop">
-              <p>Upload Avatar</p>
-            </DropZone>
-          </section>
-          
           <Select
             label="Alignment"
             name="alignment"
@@ -119,7 +128,7 @@ class CreateProfile extends Component {
           <Input
             label="Location"
             name="location"
-            placeholder="Where's your HQ?"
+            placeholder="Where are you based?"
             value={this.state.location}
             onChange={this.newValue}
           />

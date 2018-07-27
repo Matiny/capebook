@@ -18,6 +18,7 @@ import CreateProfile from "./components/dashboard/CreateProfile";
 import EditProfile from "./components/dashboard/EditProfile";
 import AddMedia from "./components/dashboard/AddMedia";
 import ProfilesAll from "./components/profiles/ProfilesAll";
+import MainProfile from "./components/profiles/MainProfile";
 
 // CSS
 import "./css/dashboard.min.css";
@@ -56,8 +57,10 @@ class App extends Component {
             <Route exact path="/" component={Home} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              {/* Protected Routes */}
               <Route exact path="/profiles" component={ProfilesAll} />
+              <Route exact path="/profile/:username" component={MainProfile} />
+              {/* Protected Routes */}
+
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>

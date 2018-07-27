@@ -7,6 +7,12 @@
   transform: translate(-$left, -$top);
 }
 
+@mixin flexCenter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @mixin buttons($color) {
   color: $color;
   font-family: "Montserrat", sans-serif;
@@ -18,7 +24,7 @@
 }
 
 .form-page {
-  height: 110%;
+  height: 120%;
 }
 
 .profile-form {
@@ -104,17 +110,33 @@
   color: white;
   font-family: "Montserrat", sans-serif;
   font-size: 1.5vw;
-  margin: 5% 0 2.5%;
+  height: 10vw;
+  display: inline-flex;
+  align-items: center;
+}
+
+.card-padding {
+  height: 23vw;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+
+  a {
+    margin: 0 auto;
+    text-decoration: none;
+  }
 }
 
 .card {
   font-family: "Montserrat", sans-serif;
   color: white;
   position: relative;
-  margin: 2.5vw auto;
+  margin: 0 auto;
   background: rgba(0, 0, 0, 0.65);
   height: 20vw;
   width: 50vw;
+  cursor: pointer;
+
   .profile-name {
     font-size: 1.5vw;
   }
@@ -122,6 +144,7 @@
     @include positioning(25%, 50%);
     height: 15vw;
     width: 15vw;
+    overflow: hidden;
     img {
       height: 100%;
     }
@@ -164,4 +187,80 @@
     width: 100%;
     transform: skewX(20deg);
   }
+}
+
+.profile-padding {
+  height: 5vw;
+  width: 100%;
+}
+
+.profile-header, .profile-about, .stories {
+  font-family: "Montserrat", sans-serif;
+  color: black;
+  margin: 0 auto;
+  min-height: 20vw;
+  width: 60vw;
+  background-color: rgba(255, 255, 255, 0.65);
+
+  h1 {
+    font-size: 2vw;
+    height: 3vw;
+    @include flexCenter;
+  }
+  figure {
+    height: 12.5vw;
+    width: 12.5vw;
+    margin: 0 auto;
+    img {
+      height: 100%;
+    }
+  }
+  figcaption {
+    width: 100%;
+    p {
+      @include flexCenter;
+      width: 33%;
+      height: 4vw;
+      font-size: 1.15vw;
+      &.skill-item {
+        width: 25%;
+      }
+    }
+  }
+
+  .bio, .origin {
+    font-size: 1.15vw;
+    width: 66%;
+    height: 7.5vw;
+    @include flexCenter;
+  }
+
+  .skills {
+    font-size: 1.15vw;
+  }
+
+  .story {
+    min-height: 15vw;
+    width: 66%;
+    margin: 0 auto;
+
+    .detail1 {
+      font-size: 1.15vw;
+      height: 3vw;
+      @include flexCenter;
+      width: 100%;
+    }
+    .detail2, .detail3, .detail4 {
+      @include flexCenter;
+      width: 33%;
+      font-size: 1vw;
+      height: 5vw;
+
+    }
+    .detail5{
+      font-size: 1vw;
+      height: 5vw;
+    }
+  }
+
 }
