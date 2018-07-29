@@ -15,13 +15,13 @@ class ProfileAbout extends Component {
 
     return (
       <div>
-        <div className="profile-padding" />
+        <div className="smaller-padding" />
         <section className="profile-about">
           {/* Check to see if any of this content is present 1st */}
 
           {!isEmpty(profile.bio) ? (
             <p className="bio">
-              Bio:<br />
+              Bio:
               {profile.bio}
             </p>
           ) : (

@@ -19,7 +19,7 @@ class ProfileStories extends Component {
 
     return (
       <div>
-        <div className="profile-padding" />
+        <div className="smaller-padding" />
         <section className="stories">
           {stories}
         </section>

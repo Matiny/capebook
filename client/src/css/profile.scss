@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:600");
 
+@import url('https://fonts.googleapis.com/css?family=Proza+Libre');
+
 @mixin positioning($left, $top) {
   position: absolute;
   left: $left;
@@ -194,13 +196,21 @@
   width: 100%;
 }
 
-.profile-header, .profile-about, .stories {
-  font-family: "Montserrat", sans-serif;
+.smaller-padding {
+  height: 1vw;
+  width: 100%;
+}
+
+.profile-header,
+.profile-about,
+.stories {
+  font-family: "Arial";
   color: black;
   margin: 0 auto;
   min-height: 20vw;
   width: 60vw;
-  background-color: rgba(255, 255, 255, 0.65);
+  background-color: rgba(255, 255, 255, 0.4);
+  // border: solid white 0.15vw;
 
   h1 {
     font-size: 2vw;
@@ -228,11 +238,17 @@
     }
   }
 
-  .bio, .origin {
+  .bio,
+  .origin {
     font-size: 1.15vw;
+    line-height: 2vw;
     width: 66%;
-    height: 7.5vw;
+    min-height: 7.5vw;
     @include flexCenter;
+  }
+
+  .bio, .detail5 {
+    padding: 1vw;
   }
 
   .skills {
@@ -250,17 +266,18 @@
       @include flexCenter;
       width: 100%;
     }
-    .detail2, .detail3, .detail4 {
+    .detail2,
+    .detail3,
+    .detail4 {
       @include flexCenter;
       width: 33%;
-      font-size: 1vw;
+      font-size: 1.15vw;
       height: 5vw;
-
     }
-    .detail5{
-      font-size: 1vw;
-      height: 5vw;
+    .detail5 {
+      font-size: 1.15vw;
+      min-height: 5vw;
+      line-height: 2vw;
     }
   }
-
 }
