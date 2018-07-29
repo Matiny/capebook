@@ -9,7 +9,9 @@ class ProfileAbout extends Component {
     // Get skill list
     if (profile.skills) {
       skills = profile.skills.map((skill, index) => (
-          <p className="skill-item" key={index}>{skill}</p>
+        <li className="skill-item" key={index}>
+          {skill}
+        </li>
       ));
     }
 
@@ -19,28 +21,22 @@ class ProfileAbout extends Component {
         <section className="profile-about">
           {/* Check to see if any of this content is present 1st */}
 
-          {!isEmpty(profile.bio) ? (
-            <p className="bio">
-              Bio:
-              {profile.bio}
+          <div className="bio">
+            <h1>Bio:</h1>
+            <p>
+              {!isEmpty(profile.bio) ? profile.bio : "No Bio is available!"}
             </p>
-          ) : (
-            <p className="bio">No Bio is available!</p>
-          )}
+          </div>
 
-          <figcaption>
-            <h2 className="skills">Skills:</h2>
-            {skills}
-          </figcaption>
+          <div className="skills">
+            <h1>Skills:</h1>
+            <ul className="skill-list">{skills}</ul>
+          </div>
 
-          {!isEmpty(profile.bio) ? (
-            <p className="origin">
-              1st Appearance: <br />
-              {profile.origin}
-            </p>
-          ) : (
-            <p className="origin">???</p>
-          )}
+          <div className="origin">
+            <h1>1st Appearance:</h1>
+            <p>{!isEmpty(profile.origin) ? profile.origin : "???"}</p>
+          </div>
 
         </section>
       </div>

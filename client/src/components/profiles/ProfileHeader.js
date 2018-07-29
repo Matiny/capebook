@@ -12,15 +12,22 @@ class ProfileHeader extends Component {
           <figure>
             <img src={profile.profilePic} alt="" />
           </figure>
+
           <figcaption>
-            <p>
-              Real Name: {!isEmpty(profile.realname) ? profile.realname : "???"}
-            </p>
-            <p>
-              Location: {!isEmpty(profile.location) ? profile.location : "???"}
-            </p>
-            <p>Morality: {profile.alignment}</p>
+            <strong>Real Name:&nbsp;</strong>
+            <p>{!isEmpty(profile.realname) ? profile.realname : "???"}</p>
           </figcaption>
+
+          <figcaption>
+            <strong>Location:&nbsp;</strong>
+            <p>{!isEmpty(profile.location) ? profile.location : "???"}</p>
+          </figcaption>
+
+          <figcaption>
+            <strong>Morality:&nbsp;</strong>
+            <p>{profile.alignment}</p>
+          </figcaption>
+
         </section>
       </div>
     );

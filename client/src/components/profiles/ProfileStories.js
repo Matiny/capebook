@@ -8,7 +8,7 @@ class ProfileStories extends Component {
     if (profile.media) {
       stories = profile.media.map((story) => (
         <div className="story" key={story._id}>
-          <p className="detail1">{story.title}</p>
+          <strong className="detail1">{story.title}</strong>
           <p className="detail2">Format:<br/>{story.format}</p>
           <p className="detail3">Actor:<br/>{story.actor ? story.actor : "???"}</p>
           <p className="detail4">Release Year:<br/>{story.releaseyear}</p>
@@ -21,6 +21,7 @@ class ProfileStories extends Component {
       <div>
         <div className="smaller-padding" />
         <section className="stories">
+          <h1>Appearances</h1>
           {stories}
         </section>
       </div>

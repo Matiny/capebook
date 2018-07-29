@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:600");
 
-@import url('https://fonts.googleapis.com/css?family=Proza+Libre');
+@import url("https://fonts.googleapis.com/css?family=Proza+Libre");
 
 @mixin positioning($left, $top) {
   position: absolute;
@@ -9,7 +9,7 @@
   transform: translate(-$left, -$top);
 }
 
-@mixin flexCenter {
+@mixin centerFlex {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -215,7 +215,7 @@
   h1 {
     font-size: 2vw;
     height: 3vw;
-    @include flexCenter;
+    @include centerFlex;
   }
   figure {
     height: 12.5vw;
@@ -226,33 +226,44 @@
     }
   }
   figcaption {
-    width: 100%;
+    @include centerFlex;
+    width: 33%;
+    height: 4vw;
+    font-size: 1.15vw;
+  }
+
+  .bio,
+  .skills,
+  .origin {
+    width: 75%;
+    margin: 0 auto;
+
+    h1 {
+      font-size: 1.5vw;
+    }
     p {
-      @include flexCenter;
-      width: 33%;
-      height: 4vw;
       font-size: 1.15vw;
-      &.skill-item {
-        width: 25%;
+    }
+    .skill-list {
+      @include centerFlex;
+      width: 100%;
+      padding-bottom: 1vw;
+      li {
+        font-size: 1.15vw;
+        width: 33%;
+        height: 3vw;
+        line-height: 3vw;
       }
     }
   }
 
   .bio,
-  .origin {
-    font-size: 1.15vw;
-    line-height: 2vw;
-    width: 66%;
-    min-height: 7.5vw;
-    @include flexCenter;
-  }
-
-  .bio, .detail5 {
+  .detail5 {
     padding: 1vw;
   }
 
-  .skills {
-    font-size: 1.15vw;
+  .origin {
+    padding-bottom: 2vw;
   }
 
   .story {
@@ -263,13 +274,13 @@
     .detail1 {
       font-size: 1.15vw;
       height: 3vw;
-      @include flexCenter;
+      @include centerFlex;
       width: 100%;
     }
     .detail2,
     .detail3,
     .detail4 {
-      @include flexCenter;
+      @include centerFlex;
       width: 33%;
       font-size: 1.15vw;
       height: 5vw;
@@ -280,4 +291,8 @@
       line-height: 2vw;
     }
   }
+}
+
+.stories h1 {
+  font-size: 1.5vw;
 }
