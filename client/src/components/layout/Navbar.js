@@ -20,13 +20,7 @@ class Navbar extends Component {
   render() {
     let { isAuthenticated, user } = this.props.auth;
     let { profile, loading } = this.props.profile;
-    let picture;
-    if (profile === null || loading) {
-      picture = null;
-    }
-    else {
-      picture = profile.profilePic;
-    }
+    let picture = user.profilePic;
     let authLinks = (
       <div>
         <span className="avatar">

@@ -23,7 +23,6 @@ class EditProfile extends Component {
       location: "",
       skills: "",
       origin: "",
-      profilePic: "",
       number: Math.floor(Math.random() * 9) + 1
     };
   }
@@ -49,7 +48,6 @@ class EditProfile extends Component {
       profile.location = !isEmpty(profile.location) ? profile.location : "";
       profile.realname = !isEmpty(profile.realname) ? profile.realname : "";
       profile.origin = !isEmpty(profile.origin) ? profile.origin : "";
-      profile.profilePic = !isEmpty(profile.profilePic) ? profile.profilePic : "";
 
       // Set state for the values
       this.setState({
@@ -59,8 +57,7 @@ class EditProfile extends Component {
         location: profile.location,
         realname: profile.realname,
         skills: skillsCSV,
-        origin: profile.origin,
-        profilePic: profile.profilePic
+        origin: profile.origin
       });
     }
   }
@@ -77,7 +74,6 @@ class EditProfile extends Component {
       location: this.state.location,
       skills: this.state.skills,
       origin: this.state.origin,
-      profilePic: this.state.profilePic
     }
 
     this.props.createProfile(profileData, this.props.history);
@@ -117,15 +113,6 @@ class EditProfile extends Component {
             placeholder="Reveal your secret identity"
             value={this.state.realname}
             onChange={this.newValue}
-          />
-
-          <Input
-            label="Profile Picture"
-            name="profilePic"
-            placeholder="Enter a URL"
-            value={this.state.profilePic}
-            onChange={this.newValue}
-            error={errors.profilePic}
           />
 
           <Input

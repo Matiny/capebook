@@ -35,7 +35,7 @@ router.post("/register", (req, res) => {
       let newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        //avatar,
+        profilePic: req.body.profilePic,
         password: req.body.password
       });
 
@@ -74,7 +74,7 @@ router.post("/login", (req, res) => {
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
         //User matched, and create payload
-        let payload = { id: user.id, name: user.name };
+        let payload = { id: user.id, name: user.name, profilePic: user.profilePic };
         //Sign Token
         jsonwebtoken.sign(
           payload,
@@ -103,7 +103,8 @@ router.get(
     res.json({
       name: req.user.name,
       email: req.user.email,
-      id: req.user.id
+      id: req.user.id,
+      profilePic: req.user.profilePic
     });
   }
 );

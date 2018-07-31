@@ -58,7 +58,7 @@ router.post(
     if (req.body.alignment) profileFields.alignment = req.body.alignment;
     if (req.body.location) profileFields.location = req.body.location;
     if (req.body.origin) profileFields.origin = req.body.origin;
-    if (req.body.profilePic) profileFields.profilePic = req.body.profilePic;
+    // if (req.body.profilePic) profileFields.profilePic = req.body.profilePic;
 
     //Skills will be split into array
     if (typeof req.body.skills !== "undefined")
@@ -97,7 +97,7 @@ router.get(
   (req, res) => {
     let errors = {};
     Profile.findOne({ user: req.user.id })
-      .populate("user", ["name", "email"])
+      .populate("user", ["name", "profilePic", "email"])
       .then(profile => {
         if (!profile) {
           errors.noprofile = "Profile not found!!";
@@ -116,7 +116,7 @@ router.get(
 router.get("/username/:username", (req, res) => {
   let errors = {};
   Profile.findOne({ username: req.params.username })
-    .populate("user", ["name", "email"])
+    .populate("user", ["name", "profilePic", "email"])
     .then(profile => {
       if (!profile) {
         errors.noprofile = "Profile not found!!";
@@ -156,7 +156,7 @@ router.get("/user/:user_id", (req, res) => {
 router.get("/all", (req, res) => {
   let errors = {};
   Profile.find()
-    .populate("user", ["name", "email"])
+    .populate("user", ["name", "profilePic"])
     .then(profiles => {
       if (!profiles) {
         errors.noprofile = "Profiles not found!!";

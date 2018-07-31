@@ -15,6 +15,9 @@ const PostSchema = new Schema({
   name: {
     type: String
   },
+  profilePic: {
+    type: String
+  },
   likes: [
     {
       // Count likes based off user id
@@ -35,6 +38,9 @@ const PostSchema = new Schema({
         required: true
       },
       name: {
+        type: String
+      },
+      profilePic: {
         type: String
       },
       date: {

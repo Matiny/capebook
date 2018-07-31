@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:600");
 
-@import url("https://fonts.googleapis.com/css?family=Proza+Libre");
-
 @mixin positioning($left, $top) {
   position: absolute;
   left: $left;
@@ -26,7 +24,7 @@
 }
 
 .form-page {
-  height: 120%;
+  height: 110%;
 }
 
 .profile-form {
@@ -192,7 +190,7 @@
 }
 
 .profile-padding {
-  height: 5vw;
+  height: 4vw;
   width: 100%;
 }
 
@@ -209,13 +207,18 @@
   margin: 0 auto;
   min-height: 20vw;
   width: 60vw;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.55);
   // border: solid white 0.15vw;
 
   h1 {
     font-size: 2vw;
     height: 3vw;
     @include centerFlex;
+    &.appearance {
+      font-size: 1.5vw;
+      padding-top: 1vw;
+    }
+
   }
   figure {
     height: 12.5vw;
@@ -291,8 +294,4 @@
       line-height: 2vw;
     }
   }
-}
-
-.stories h1 {
-  font-size: 1.5vw;
 }

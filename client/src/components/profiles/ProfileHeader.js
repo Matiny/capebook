@@ -10,7 +10,7 @@ class ProfileHeader extends Component {
         <section className="profile-header">
           <h1>{profile.user ? profile.user.name : <Loading />}</h1>
           <figure>
-            <img src={profile.profilePic} alt="" />
+            <img src={profile.user.profilePic} alt="" />
           </figure>
 
           <figcaption>

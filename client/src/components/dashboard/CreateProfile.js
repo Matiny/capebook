@@ -22,7 +22,6 @@ class CreateProfile extends Component {
       location: "",
       skills: "",
       origin: "",
-      profilePic: "",
       number: Math.floor(Math.random() * 9) + 1
     };
   }
@@ -46,7 +45,6 @@ class CreateProfile extends Component {
       location: this.state.location,
       skills: this.state.skills,
       origin: this.state.origin,
-      profilePic: this.state.profilePic
     }
 
     this.props.createProfile(profileData, this.props.history);
@@ -87,15 +85,6 @@ class CreateProfile extends Component {
             placeholder="Reveal your secret identity"
             value={this.state.realname}
             onChange={this.newValue}
-          />
-
-          <Input
-            label="Profile Picture"
-            name="profilePic"
-            placeholder="Enter a URL"
-            value={this.state.profilePic}
-            onChange={this.newValue}
-            error={errors.profilePic}
           />
 
           <Input

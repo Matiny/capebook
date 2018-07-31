@@ -26,6 +26,14 @@ module.exports = validateRegisterInput = data => {
     errors.email = "Email is required";
   }
 
+  // URL checks
+
+  if (!isEmpty(data.profilePic)) {
+    if (!validator.isURL(data.profilePic)) {
+      errors.profilePic = "Invalid URL";
+    }
+  }
+
   if (validator.isEmpty(data.password)) {
     errors.password = "Password is required";
   }

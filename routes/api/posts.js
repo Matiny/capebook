@@ -32,7 +32,8 @@ router.post(
     const newPost = new Post({
       text: req.body.text,
       name: req.body.name,
-      user: req.user.id
+      profilePic: req.body.profilePic,
+      user: req.user.id,
     });
 
     newPost.save().then(post => res.json(post));
@@ -163,6 +164,7 @@ router.post(
         let newComment = {
           text: req.body.text,
           name: req.body.name,
+          profilePic: req.body.profilePic,
           user: req.user.id
         };
         //Add comment to array...

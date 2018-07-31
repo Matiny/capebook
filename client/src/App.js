@@ -19,6 +19,8 @@ import EditProfile from "./components/dashboard/EditProfile";
 import AddMedia from "./components/dashboard/AddMedia";
 import ProfilesAll from "./components/profiles/ProfilesAll";
 import MainProfile from "./components/profiles/MainProfile";
+import AllPosts from "./components/posts/AllPosts";
+import SinglePost from "./components/posts/SinglePost";
 
 // CSS
 import "./css/dashboard.min.css";
@@ -83,6 +85,20 @@ class App extends Component {
                   exact
                   path="/add-media"
                   component={AddMedia}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/posts"
+                  component={AllPosts}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/post/:id"
+                  component={SinglePost}
                 />
               </Switch>
           </div>

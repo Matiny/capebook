@@ -12,7 +12,7 @@ class ProfileCard extends Component {
         <div className="card">
           <h1 className="profile-name">{profile.user.name}</h1>
           <div className="profile-pic">
-            <img src={profile.profilePic} alt=""/>
+            <img src={profile.user.profilePic} alt=""/>
           </div>
           <div className="info-box">
             <p className="info1">Location: {profile.location}</p>

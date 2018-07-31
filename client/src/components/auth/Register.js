@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import Input from "../common/Input";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
 class Register extends Component {
   constructor() {
@@ -13,6 +13,7 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
+      profilePic: "",
       errors: {},
       number: Math.floor(Math.random() * 8) + 1
     };
@@ -42,7 +43,8 @@ class Register extends Component {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      password2: this.state.password2
+      password2: this.state.password2,
+      profilePic: this.state.profilePic
     };
 
     this.props.registerUser(newUser, this.props.history);
@@ -101,6 +103,15 @@ class Register extends Component {
             value={this.state.password2}
             onChange={this.newValue}
             error={errors.password2}
+          />
+
+          <Input
+            label="Profile Picture"
+            name="profilePic"
+            placeholder="Enter a URL"
+            value={this.state.profilePic}
+            onChange={this.newValue}
+            error={errors.profilePic}
           />
 
           <span onClick={this.submitForm}>

@@ -21,7 +21,7 @@ class ProfileStories extends Component {
       <div>
         <div className="smaller-padding" />
         <section className="stories">
-          <h1>Appearances</h1>
+          <h1 className="appearance">Other Appearances</h1>
           {stories}
         </section>
       </div>
