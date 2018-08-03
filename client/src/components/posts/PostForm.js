@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Textarea from "../common/Textarea";
 import { addPost } from "../../actions/postActions";
+import Textarea from "../common/Textarea";
 
 class PostForm extends Component {
   constructor(props) {

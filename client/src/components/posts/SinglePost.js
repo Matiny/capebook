@@ -10,34 +10,34 @@ import CommentFeed from "./CommentFeed";
 import Loading from "../common/loading";
 
 class SinglePost extends Component {
+  componentDidMount() {
+    // Get this post's info by id
+    this.props.getPost(this.props.match.params.id);
+  }
+
   constructor(props) {
     super(props);
     this.state = {
       number: Math.floor(Math.random() * 9) + 1
     };
   }
-  componentDidMount() {
-    // Get this post's info by id
-    this.props.getPost(this.props.match.params.id);
-  }
-
   render() {
     const styles = {
       backgroundImage: `url(${require(`../../images/bgs/${
         this.state.number
       }.jpg`)})`
     };
-    let { posts, loading } = this.props.post;
+    let { post, loading } = this.props.post;
     let postContent;
 
-    if (posts === null || loading || Object.keys(posts).length === 0) {
+    if (post === null || loading || Object.keys(post).length === 0) {
       postContent = <Loading />;
     } else {
       postContent = (
         <div>
-          <PostItem post={posts} showActions={false} />
-          <CommentForm postId={posts._id} />
-          <CommentFeed postId={posts._id} comments={posts.comments}/>
+          <PostItem post={post} showActions={false} />
+          <CommentForm postId={post._id} />
+          <CommentFeed postId={post._id} comments={post.comments}/>
         </div>
       );
     }

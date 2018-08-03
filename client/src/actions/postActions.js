@@ -73,7 +73,7 @@ export let removeLike = id => dispatch => {
 };
 
 // Get post
-export let getPost = id => dispatch => {
+export const getPost = id => dispatch => {
   dispatch(setPostLoading());
   axios
     .get(`/api/posts/${id}`)
@@ -92,7 +92,7 @@ export let getPost = id => dispatch => {
 };
 
 // Get posts
-export let getPosts = () => dispatch => {
+export const getPosts = () => dispatch => {
   dispatch(setPostLoading());
   axios
     .get("/api/posts")

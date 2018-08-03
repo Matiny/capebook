@@ -9,14 +9,14 @@ import Loading from "../common/loading";
 import "../../css/post.min.css";
 
 class AllPosts extends Component {
+  componentDidMount() {
+    this.props.getPosts();
+  }
   constructor(props) {
     super(props);
     this.state = {
       number: Math.floor(Math.random() * 9) + 1
     };
-  }
-  componentDidMount() {
-    this.props.getPosts();
   }
   render() {
     let { posts, loading } = this.props.post;

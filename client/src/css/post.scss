@@ -81,6 +81,8 @@
     border: solid #555 0.1vw;
     box-sizing: border-box;
     p {
+      @include positioning(50%, 50%);
+      width: 75%;
       font-size: 1vw;
       line-height: 2vw;
     }
@@ -165,6 +167,8 @@
 
 .post-card {
   min-height: 18vw;
+  color: black;
+  background: rgba(255, 255, 255, .4);
 }
 
 .post-item {
