@@ -14,7 +14,6 @@ class Register extends Component {
       password: "",
       password2: "",
       profilePic: "",
-      errors: {},
       number: Math.floor(Math.random() * 8) + 1
     };
   }
@@ -23,12 +22,6 @@ class Register extends Component {
     if (this.props.auth.isAuthenticated) {
       //Redirect the logged user from accessing this component
       this.props.history.push("/dashboard");
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
     }
   }
 
@@ -59,7 +52,7 @@ class Register extends Component {
       backgroundPosition: "center center"
     };
     //Error checking variable
-    let { errors } = this.state;
+    let { errors } = this.props;
 
     return (
       <main style={styles} className="index">

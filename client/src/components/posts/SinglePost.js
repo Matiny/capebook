@@ -44,6 +44,7 @@ class SinglePost extends Component {
     return (
       <main style={styles}>
         <div className="profile-padding" />
+        <h1 className="post-h1">{post.name}'s Post</h1>
         {postContent}
       </main>
     );

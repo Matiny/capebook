@@ -23,6 +23,13 @@ class MainProfile extends Component {
     }
   }
 
+  componentDidUpdate() {
+    const { profile } = this.props.profile;
+    if (profile === null) {
+      this.props.history.push("/");
+    }
+  }
+
   render() {
     const styles = {
       backgroundImage: `url(${require(`../../images/bgs/${
@@ -60,7 +67,8 @@ MainProfile.propTypes = {
 };
 
 let mapStateToProps = state => ({
-  profile: state.profile
+  profile: state.profile,
+  auth: state.profile
 });
 
 export default connect(

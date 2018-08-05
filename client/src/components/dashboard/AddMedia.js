@@ -15,14 +15,8 @@ class AddMedia extends Component {
       releaseyear: "",
       actor: "",
       description: "",
-      errors: {},
       number: Math.floor(Math.random() * 9) + 1
     };
-  }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
-    }
   }
 
   //Set text values to state
@@ -46,7 +40,7 @@ class AddMedia extends Component {
       backgroundPosition: "center center"
     };
 
-    let { errors } = this.state;
+    let { errors } = this.props;
 
     return (
       <main style={styles}>

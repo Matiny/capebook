@@ -36,7 +36,8 @@
   @include centerFlex;
 }
 
-.post-card, .post-item {
+.post-card,
+.post-item {
   font-family: "Montserrat", sans-serif;
   color: white;
   position: relative;
@@ -118,14 +119,15 @@
       left: 35%;
     }
 
-    .delete, .delete-comment {
+    .delete,
+    .delete-comment {
       width: 3vw;
       position: absolute;
-      left: 53%
+      left: 53%;
     }
 
     .delete-comment {
-      left: 5%
+      left: 5%;
     }
     // .dislike {
     //   width: 4vw;
@@ -162,15 +164,14 @@
     font-size: 1vw;
     height: 1.5vw;
   }
-
 }
 
 .post-card {
   min-height: 18vw;
-  color: black;
-  background: rgba(255, 255, 255, .4);
 }
 
 .post-item {
   height: 18vw;
+  box-sizing: border-box;
+  border: white solid 0.2vw;
 }

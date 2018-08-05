@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { createProfile, getOnlineProfile } from "../../actions/profileActions";
-import isEmpty from '../../utils/is-empty.js';
+import isEmpty from "../../utils/is-empty.js";
 
 // Components
 import Input from "../common/Input";
@@ -15,7 +15,6 @@ class EditProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      errors: {},
       username: "",
       bio: "",
       realname: "",
@@ -31,36 +30,58 @@ class EditProfile extends Component {
     this.props.getOnlineProfile();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
-    }
-
-    if (nextProps.profile.profile) {
-      let profile = nextProps.profile.profile;
+  componentDidUpdate(prevProps, prevState) {
+    let current = this.props.profile.profile;
+    let old = prevProps.profile.profile;
+    if (!isEmpty(current) && current !== old) {
       // Deconvert skills array into comma separated values
-      let skillsCSV = profile.skills.join(",");
-
+      let skillsCSV = current.skills.join(",");
       // If profile values don't exist then convert to empty string
-      profile.username = !isEmpty(profile.username) ? profile.username : "";
-      profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
-      profile.alignment = !isEmpty(profile.alignment) ? profile.alignment : "";
-      profile.location = !isEmpty(profile.location) ? profile.location : "";
-      profile.realname = !isEmpty(profile.realname) ? profile.realname : "";
-      profile.origin = !isEmpty(profile.origin) ? profile.origin : "";
+      current.username = !isEmpty(current.username) ? current.username : "";
+      current.bio = !isEmpty(current.bio) ? current.bio : "";
+      current.alignment = !isEmpty(current.alignment) ? current.alignment : "";
+      current.location = !isEmpty(current.location) ? current.location : "";
+      current.realname = !isEmpty(current.realname) ? current.realname : "";
+      current.origin = !isEmpty(current.origin) ? current.origin : "";
 
-      // Set state for the values
       this.setState({
-        username: profile.username,
-        bio: profile.bio,
-        alignment: profile.alignment,
-        location: profile.location,
-        realname: profile.realname,
+        username: current.username,
+        bio: current.bio,
+        alignment: current.alignment,
+        location: current.location,
+        realname: current.realname,
         skills: skillsCSV,
-        origin: profile.origin
+        origin: current.origin
       });
     }
   }
+
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //   if (nextProps.profile.profile) {
+  //     let profile = nextProps.profile.profile;
+  //     // Deconvert skills array into comma separated values
+  //     let skillsCSV = profile.skills.join(",");
+  //
+  //     // If profile values don't exist then convert to empty string
+  //     profile.username = !isEmpty(profile.username) ? profile.username : "";
+  //     profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
+  //     profile.alignment = !isEmpty(profile.alignment) ? profile.alignment : "";
+  //     profile.location = !isEmpty(profile.location) ? profile.location : "";
+  //     profile.realname = !isEmpty(profile.realname) ? profile.realname : "";
+  //     profile.origin = !isEmpty(profile.origin) ? profile.origin : "";
+  //
+  //     return {
+  //       username: profile.username,
+  //       bio: profile.bio,
+  //       alignment: profile.alignment,
+  //       location: profile.location,
+  //       realname: profile.realname,
+  //       skills: skillsCSV,
+  //       origin: profile.origin
+  //     };
+  //   }
+  //   return null;
+  // }
 
   //Set text values to state
   newValue = e => this.setState({ [e.target.name]: e.target.value });
@@ -73,14 +94,14 @@ class EditProfile extends Component {
       alignment: this.state.alignment,
       location: this.state.location,
       skills: this.state.skills,
-      origin: this.state.origin,
-    }
+      origin: this.state.origin
+    };
 
     this.props.createProfile(profileData, this.props.history);
   };
 
   render() {
-    let { errors } = this.state;
+    let { errors } = this.props;
     // Set the select component's alignment options
     let options = [
       { label: "Select Moral Alignment (Required)", value: "" },

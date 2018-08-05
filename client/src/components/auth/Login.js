@@ -11,7 +11,6 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      errors: {},
       number: Math.floor(Math.random() * 8) + 1
     };
   }
@@ -23,14 +22,13 @@ class Login extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
-    }
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
-    }
-  }
+  // When new props come in, redirect to dashboard
+  componentDidUpdate() {
+     const { isAuthenticated } = this.props.auth;
+     if (isAuthenticated) {
+       this.props.history.push("/dashboard");
+     }
+   }
 
   //Set text values to state
   newValue = e => this.setState({ [e.target.name]: e.target.value });
@@ -54,7 +52,7 @@ class Login extends Component {
       backgroundPosition: "center center"
     };
     //Error checking variable
-    let { errors } = this.state;
+    let { errors } = this.props;
 
     return (
       <main style={styles} className="index">

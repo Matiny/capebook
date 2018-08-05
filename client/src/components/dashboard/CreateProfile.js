@@ -14,7 +14,6 @@ class CreateProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      errors: {},
       username: "",
       bio: "",
       realname: "",
@@ -26,17 +25,10 @@ class CreateProfile extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
-    }
-  }
-
   //Set text values to state
   newValue = e => this.setState({ [e.target.name]: e.target.value });
 
   submitForm = () => {
-
     let profileData = {
       username: this.state.username,
       bio: this.state.bio,
@@ -44,14 +36,14 @@ class CreateProfile extends Component {
       alignment: this.state.alignment,
       location: this.state.location,
       skills: this.state.skills,
-      origin: this.state.origin,
-    }
+      origin: this.state.origin
+    };
 
     this.props.createProfile(profileData, this.props.history);
   };
 
   render() {
-    let { errors } = this.state;
+    let { errors } = this.props;
     // Set the select component's alignment options
     let options = [
       { label: "Select Moral Alignment (Required)", value: "" },
@@ -62,7 +54,7 @@ class CreateProfile extends Component {
       { label: "Neutral", value: "Neutral" },
       { label: "Neutral (Chaotic)", value: "Neutral (Chaotic)" },
       { label: "Evil (Lawful)", value: "Evil (Lawful)" },
-      { label: "Evil (Neutral)", value: "Evil (Lawful)" },
+      { label: "Evil (Neutral)", value: "Evil (Neutral)" },
       { label: "Evil (Chaotic)", value: "Evil (Chaotic)" }
     ];
     const styles = {

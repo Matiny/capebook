@@ -12,7 +12,7 @@ class ProfileStories extends Component {
           <p className="detail2">Format:<br/>{story.format}</p>
           <p className="detail3">Actor:<br/>{story.actor ? story.actor : "???"}</p>
           <p className="detail4">Release Year:<br/>{story.releaseyear}</p>
-          <p className="detail5">Description: <br/>{story.description ? story.description : "No Description"}</p>
+          <p className="detail5">Description:<br/>{story.description ? story.description : "No Description"}</p>
         </div>
       ));
     }
