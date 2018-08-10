@@ -8,7 +8,6 @@ import { createProfile } from "../../actions/profileActions";
 import Input from "../common/Input";
 import Textarea from "../common/Textarea";
 import Select from "../common/Select";
-import DropZone from "react-dropzone";
 
 class CreateProfile extends Component {
   constructor(props) {

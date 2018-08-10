@@ -1,4 +1,5 @@
-module.exports = {
-  mongoURI: "mongodb://matinydb:matinydb@ds063869.mlab.com:63869/capebook",
-  jwtKey: "passcode"
-};
+if (process.env.NODE_ENV === "production") {
+  module.exports = require("./keys_prod");
+} else {
+  module.exports = require("./keys_dev");
+}

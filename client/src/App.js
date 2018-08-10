@@ -21,12 +21,14 @@ import ProfilesAll from "./components/profiles/ProfilesAll";
 import MainProfile from "./components/profiles/MainProfile";
 import AllPosts from "./components/posts/AllPosts";
 import SinglePost from "./components/posts/SinglePost";
+import NotFound from "./components/common/NotFound";
 
 // CSS
 import "./css/dashboard.min.css";
 import "./css/layout.min.css";
 import "./css/profile.min.css";
 import "./css/auth.min.css";
+import "./css/post.min.css";
 
 //Check for token in localStorage
 if (localStorage.jwtToken) {
@@ -57,50 +59,42 @@ class App extends Component {
           <div className="container">
             <Navbar />
             <Route exact path="/" component={Home} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/profiles" component={ProfilesAll} />
-              <Route exact path="/profile/:username" component={MainProfile} />
-              {/* Protected Routes */}
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/profiles" component={ProfilesAll} />
+            <Route exact path="/profile/:username" component={MainProfile} />
 
-              <Switch>
-                <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path="/create-profile"
-                  component={CreateProfile}
-                />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path="/edit-profile"
-                  component={EditProfile}
-                />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path="/add-media"
-                  component={AddMedia}
-                />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path="/posts"
-                  component={AllPosts}
-                />
-              </Switch>
-              <Switch>
-                <PrivateRoute
-                  exact
-                  path="/post/:id"
-                  component={SinglePost}
-                />
-              </Switch>
+            {/* Not Found */}
+            <Route exact path="/not-found" component={NotFound} />
+
+            {/* Protected Routes */}
+
+            <Switch>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/create-profile"
+                component={CreateProfile}
+              />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/edit-profile"
+                component={EditProfile}
+              />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/add-media" component={AddMedia} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/posts" component={AllPosts} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/post/:id" component={SinglePost} />
+            </Switch>
           </div>
         </Router>
       </Provider>

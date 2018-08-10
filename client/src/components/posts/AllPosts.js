@@ -6,7 +6,6 @@ import { getPosts } from "../../actions/postActions";
 
 import PostFeed from './PostFeed';
 import Loading from "../common/loading";
-import "../../css/post.min.css";
 
 class AllPosts extends Component {
   componentDidMount() {

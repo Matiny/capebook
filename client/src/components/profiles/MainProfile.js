@@ -15,17 +15,20 @@ class MainProfile extends Component {
       number: Math.floor(Math.random() * 9) + 1
     };
   }
+
   componentDidMount() {
     // Use Router to grab the username param
-    let onlineUser = this.props.match.params.username;
-    if (onlineUser) {
-      this.props.getUsername(onlineUser);
+    let { username } = this.props.match.params;
+    if (username) {
+      this.props.getUsername(username);
     }
   }
 
-  componentDidUpdate() {
+  // This prevents users from having an infinite loop on logout
+  componentDidUpdate(prevProps) {
     const { profile } = this.props.profile;
-    if (profile === null) {
+    let { username } = this.props.match.params;
+    if (profile === null && prevProps.profile.profile != profile) {
       this.props.history.push("/");
     }
   }
@@ -49,9 +52,7 @@ class MainProfile extends Component {
           <div className="profile-padding" />
           <ProfileHeader profile={profile} />
           <ProfileAbout profile={profile} />
-          {
-            storyList ? <ProfileStories profile={profile}/> : null
-          }
+          {storyList ? <ProfileStories profile={profile} /> : null}
 
           <div className="profile-padding" />
         </section>

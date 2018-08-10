@@ -9,7 +9,6 @@ import isEmpty from "../../utils/is-empty.js";
 import Input from "../common/Input";
 import Textarea from "../common/Textarea";
 import Select from "../common/Select";
-import DropZone from "react-dropzone";
 
 class EditProfile extends Component {
   constructor(props) {
@@ -56,33 +55,6 @@ class EditProfile extends Component {
     }
   }
 
-  // static getDerivedStateFromProps(nextProps, prevState) {
-  //   if (nextProps.profile.profile) {
-  //     let profile = nextProps.profile.profile;
-  //     // Deconvert skills array into comma separated values
-  //     let skillsCSV = profile.skills.join(",");
-  //
-  //     // If profile values don't exist then convert to empty string
-  //     profile.username = !isEmpty(profile.username) ? profile.username : "";
-  //     profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
-  //     profile.alignment = !isEmpty(profile.alignment) ? profile.alignment : "";
-  //     profile.location = !isEmpty(profile.location) ? profile.location : "";
-  //     profile.realname = !isEmpty(profile.realname) ? profile.realname : "";
-  //     profile.origin = !isEmpty(profile.origin) ? profile.origin : "";
-  //
-  //     return {
-  //       username: profile.username,
-  //       bio: profile.bio,
-  //       alignment: profile.alignment,
-  //       location: profile.location,
-  //       realname: profile.realname,
-  //       skills: skillsCSV,
-  //       origin: profile.origin
-  //     };
-  //   }
-  //   return null;
-  // }
-
   //Set text values to state
   newValue = e => this.setState({ [e.target.name]: e.target.value });
 
@@ -112,7 +84,7 @@ class EditProfile extends Component {
       { label: "Neutral", value: "Neutral" },
       { label: "Neutral (Chaotic)", value: "Neutral (Chaotic)" },
       { label: "Evil (Lawful)", value: "Evil (Lawful)" },
-      { label: "Evil (Neutral)", value: "Evil (Lawful)" },
+      { label: "Evil (Neutral)", value: "Evil (Neutral)" },
       { label: "Evil (Chaotic)", value: "Evil (Chaotic)" }
     ];
     const styles = {
